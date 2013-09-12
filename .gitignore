@@ -1,0 +1,5 @@
+*.gz
+*.out
+*.swp
+*.log
+*.aux

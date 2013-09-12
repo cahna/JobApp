@@ -1,0 +1,205 @@
+\documentclass[10pt]{article}
+\usepackage{jobapp}
+
+%----------------------------------------------
+%	Document information
+%----------------------------------------------
+\SetName{Your Name}
+\SetAddress{Your Street Address\\City, State ZIP}
+\SetPhone{+1 Your Phone \#}
+\SetEmail{your.email@domain.tld}
+
+%% Helpers
+\newcommand{\city}{Cityton, ST}
+\newcommand{\univ}{University of Foo}
+\newcommand{\school}{J.B. Speed School of Engineering, \univ{}, \city{}}
+\newcommand{\major}{Computer Science}
+
+%----------------------------------------------
+%	Document
+%----------------------------------------------
+\begin{document}
+  %\layout % Uncomment to display graphic of page layout
+
+  %----------------------------------------------
+  %	  Education
+  %----------------------------------------------
+  \section*{Education}
+    %% Post-grad
+    \begin{CvBlockEnv}
+      {2013}
+      {\school{}}
+      \begin{citemize}
+        \item \emph{Master of Engineering}, \major{} \hfill Completed: 3.92/4.00
+        \item \emph{Graduate Certificate}, Fancy Pieces of Paper (MLA)
+      \end{citemize}
+    \end{CvBlockEnv}
+    
+    %% Undergrad
+    \begin{CvBlockEnv}
+      {2012}
+      {\school{}}
+      \begin{citemize}
+        \item \emph{Bachelor of Science}, \major{}
+      \end{citemize}
+    \end{CvBlockEnv}
+
+  %----------------------------------------------
+  %	  Skills & Expertise
+  %----------------------------------------------
+  \section*{Skills \& Expertise}
+     \begin{CvTable}
+      %% Languages    
+      \textbf{Languages} & \textbf{Forth}, 
+                           \textbf{C/C++}, 
+                           \textbf{Assembly}, 
+                           \textbf{Java}, 
+                           \textbf{Bash Shell Scripting}, 
+                           Ruby, 
+                           Lua, 
+                           SQL, 
+                           \LaTeX\ \\
+                           
+      %% Tools
+      \textbf{Tools} & \textbf{Linux/Unix}, 
+                       \textbf{.NET}, 
+                       \textbf{CakePHP}, 
+                       \textbf{Adobe Creative Suite}, 
+                       \textbf{Visual Studio}, 
+                       MySQL, 
+                       Nginx,  
+                       Vim, 
+                       Sublime Text, 
+                       \\  
+                       
+      %% Other
+      \textbf{Other} & Yak shaving, 
+                       Eating, 
+                       Breathing, 
+                       Existing \\
+      
+      %% Secondary
+      \textit{Secondary} & Eclipse, 
+                           Matlab, 
+                           Minitab, 
+                           SVN, 
+                           IBM DB2
+    \end{CvTable}
+
+  %----------------------------------------------
+  %	  Experience
+  %----------------------------------------------
+  \section*{Work Experience}
+  
+    %% Big Project
+    \begin{CvBlockEnv}
+      {2013}
+      {Project Name - Customer \\ Short Description (C\#, .NET, \& SQL)}
+        \begin{citemize}
+          \item Did something and other lorem ipsum, and such. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis.
+          \item Wrote some lorem ipsum text to fill space for hours. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis.
+          \item Reduced meaning full text by over 90\%.
+        \end{citemize}
+    \end{CvBlockEnv}
+    
+    %% Company 1
+    \begin{CvBlockEnv}
+      {2009--2012}
+      {Company Name \\ Title of Position}
+        \begin{citemize}
+          \item Did something and other lorem ipsum, and such. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis.
+          \item Wrote some lorem ipsum text to fill space for hours. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis.
+          \item Reduced meaning full text by over 90\%.
+        \end{citemize}%
+    \end{CvBlockEnv}
+    
+    %% Self-employed
+    \begin{CvBlockEnv}
+      {2006--Present}
+      {Self-employed \\ Real work, sometimes}
+        \begin{citemize}
+          \item Wrote some lorem ipsum text to fill space for hours.
+        \end{citemize}
+    \end{CvBlockEnv}
+  
+  %----------------------------------------------
+  %	  Awards & Activities
+  %----------------------------------------------
+  \section*{Awards \& Activities}
+    
+    %% Award 1
+    \begin{CvBlockEnv}
+      {2012--2013}
+      {\first{} Place \\ Competition Name}
+        \begin{citemize}
+          \item Wrote some lorem ipsum text to fill space for hours.
+          \item Reduced meaning full text by over 90\%.
+        \end{citemize}
+    \end{CvBlockEnv}
+    %% Manually control page spillover
+    \section*{Awards \& Activities \normalsize{(Cont.)}}
+    %% Award 2
+    \begin{CvBlockEnv}
+      {2011--2012}
+      {Best Thing \\ In the World} 
+        \begin{citemize}
+          \item Founded this thing and did all the stuff.
+          \item Developed this thing and tested its other things.
+          \item Took initiative to make this thing.
+        \end{citemize}
+    \end{CvBlockEnv}
+    
+    
+      %% Other Awards
+      \begin{CvTable}
+        2010 & \textbf{An Award}, \textit{\univ{} Sub Department} \\
+        2010 & \textbf{Most Outstanding Person}, \textit{Organization Foo} \\
+        2007--2012 & \textbf{A Scholarship}, \textit{\univ{}}
+      \end{CvTable}
+
+  %----------------------------------------------
+  %	  Applied Experience
+  %----------------------------------------------
+  \section*{Applied Experience}
+    %% Project 1
+    \begin{CvBlockEnv}
+      {2012--2013}
+      {A Course Project \\ Associated Description}
+      \begin{citemize}
+        \item Planned, built, and tested a program thingy mostly from StackOverflow
+              snippets of code.
+        \item Fixed the thing when it broke because I didn't write unit tests.
+      \end{citemize}
+    \end{CvBlockEnv}
+    
+    %% Project 2
+    \begin{CvBlockEnv}
+      {2012--2013}
+      {Another Project \\ A Longer Description}
+      \begin{citemize}
+        \item Researched this really neat thing, and automated its stuff.
+        \item Said something about a team, because people like teams.
+      \end{citemize}
+    \end{CvBlockEnv}
+    
+    %% Project 3
+    \begin{CvBlockEnv}
+      {2012-Present}
+      {Personal Project \\ Really Awesome Lego Robot}
+      \begin{citemize}
+        \item Developed a robot to make and serve me coffee each morning in bed.
+      \end{citemize}
+    \end{CvBlockEnv}     
+
+  %----------------------------------------------
+  %	  Personal
+  %----------------------------------------------
+  \section*{Personal}
+    
+    %% Personal stuff
+    \begin{CvTable}
+      \textbf{Hobbies}   & Lorem, Ipsum, Dolor Sit, Amet, And, Stuff\\
+      \textbf{Interests} & Reading, Writing, etc
+    \end{CvTable}
+
+\end{document}
