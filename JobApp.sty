@@ -9,8 +9,8 @@
 \usepackage[margin=1.5cm,top=60pt]{geometry}
 \usepackage{parskip}
 \usepackage{setspace}
-\usepackage{tgpagella} % TG Pagella font
 \usepackage{textcomp} % Needed for pagella font bullet points
+%\usepackage[default,scale=0.95]{opensans}
 \usepackage[T1]{fontenc}
 \usepackage{titlesec}
 \usepackage{enumitem}
@@ -18,6 +18,12 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
 \usepackage{xparse}
+
+\usepackage{lmodern}
+\usepackage{scrextend}
+\changefontsizes{8pt}
+\usepackage{fontspec}
+\setmainfont{Droid Sans}
 
 %----------------------------------------------
 %	Debugging utilities (uncomment to enable)
@@ -30,9 +36,9 @@
 %----------------------------------------------
 \definecolor{lightgray}{gray}{0.8}
 \newcommand\VRule{\color{lightgray}\vrule width 1pt}
-\newcommand\HRule{\color{lightgray}\hrule height 0.4pt} 
+\newcommand\HRule{\color{lightgray}\hrule height 0.4pt}
 \newcolumntype{L}{>{\raggedleft}p{0.11\textwidth}}
-\newcolumntype{R}{p{0.83\textwidth}}
+\newcolumntype{R}{p{0.85\textwidth}}
 
 \makeatletter
 \newcommand{\DoIfNoText}[1]{% Thanks to http://tex.stackexchange.com/a/44938
@@ -51,6 +57,7 @@
 %   Document Variables
 %----------------------------------------------
 \newcommand\Name{}
+\newcommand\ProfessionalTitle{}
 \newcommand\Address{}
 \newcommand\Phone{}
 \newcommand\Email{}
@@ -63,6 +70,7 @@
 %----------------------------------------------
 \newcommand{\SetName}[1]{\renewcommand{\Name}{#1}}
 \newcommand{\SetAddress}[1]{\renewcommand{\Address}{#1}}
+\newcommand{\SetProfessionalTitle}[1]{\renewcommand{\ProfessionalTitle}{#1}}
 \newcommand{\SetPhone}[1]{\renewcommand{\Phone}{#1}}
 \newcommand{\SetEmail}[1]{\renewcommand{\Email}{#1}}
 
@@ -85,7 +93,7 @@
 %   Helpers
 %----------------------------------------------
 \newcommand{\emailhref}{\href{mailto:\Email}{\Email}}
-\newcommand{\contactblock}{\Address \\ \Phone \\ \emailhref}
+\newcommand{\contactblock}{\normalsize \Address \\ \Phone \\ \emailhref}
 \newcommand{\first}{1\textsuperscript{st}}
 \newcommand{\second}{2\textsuperscript{nd}}
 \newcommand{\third}{3\textsuperscript{rd}}
@@ -95,9 +103,9 @@
 %	Page customizations
 %----------------------------------------------
 \pagestyle{fancy}
-\setlength{\headheight}{56pt}
-\setlength{\headsep}{32pt}
-\setlength{\textheight}{668pt}
+\setlength{\headheight}{55pt}
+\setlength{\headsep}{15pt}
+\setlength{\textheight}{665pt}
 \setlength{\footskip}{10pt}
 \setlength{\parskip}{10pt}
 \renewcommand{\arraystretch}{1.2}
@@ -106,8 +114,8 @@
 \titleformat*{\section}{\bfseries\Large\uppercase}
 \titlespacing{\section}
   {0pt} % left
-  {5pt} % before
-  {-2pt} % after
+  {0.2em} % before
+  {-0.9em} % after
   [0pt] % right
 
 %----------------------------------------------
@@ -117,17 +125,17 @@
 %% Header Left - Show large name on first page
 \fancyhead[LH]{% 
   \ifthenelse{\value{page}=1}{%
-    \raisebox{0.5\height}{\Huge\scshape{\Name}}%
+    \raisebox{1.2\height}{ %
+    	\parbox[t]{0.85\textwidth}{ %
+	    	\Huge{\scshape{\Name}} \vspace{2pt} \\ \large{\textcolor{gray}{\ProfessionalTitle}} %
+    	} %
+	 }
   }{}
 }
 
 %% Header Right - Show contact info on first page; name otherwise.
 \fancyhead[RH]{% 
-  \ifthenelse{\value{page}=1}{%
-    \contactblock%
-  }{%
-    \Large\scshape{\Name}%
-  }
+  \ifthenelse{\value{page}=1}{\contactblock}{\Large\scshape{\Name}}
 }
 
 %% Footer - Empty Footer
@@ -142,28 +150,10 @@
   {\begin{tabular}{L!{\VRule}R}}
   {\end{tabular}}
 
-%% Formats resume item blocks
-\NewDocumentEnvironment
-  {CvBlockEnv}
-  {m >{\SplitArgument{1}{\\}} m}
-  {%
-    \begin{CvTable} %
-      #1 & \CvBlockSplitTitle#2 % Set year/title/subtitle
-  }{%
-    \end{CvTable} % End block detail
-  }
-
-%% Splits the second argument to CvBlockEnv into Title & Subtitle
-\def\CvBlockSplitTitle#1#2{%
-  \parbox[t]{0.8\textwidth}{\textbf{#1}%
-    \IfValueTF {#2} { \\ \textit{#2} } { }%
-  }
-}
-
 %% Create compact itemize
 \newenvironment{citemize}
-  { \vspace{0.2em}\begin{itemize}[leftmargin=12pt, itemsep=0.2em] }
-  { \vspace{-1em}\end{itemize} }
+  { \vspace{-0.2em}\begin{itemize}[leftmargin=12pt, itemsep=0.1em] }
+  { \end{itemize}\vspace{-0.3em} }
   
 %----------------------------------------------
 %	Cover Letter
