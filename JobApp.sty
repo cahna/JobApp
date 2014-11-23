@@ -1,9 +1,7 @@
 \ProvidesFile{jobapp}
 \special{papersize=8.5in,11in}
 
-%----------------------------------------------
-%	Dependencies 
-%----------------------------------------------
+%%	Dependencies 
 \usepackage{array}
 \usepackage{xcolor}
 \usepackage[margin=1.5cm,top=60pt]{geometry}
@@ -25,15 +23,10 @@
 \usepackage{fontspec}
 \setmainfont{Droid Sans}
 
-%----------------------------------------------
-%	Debugging utilities (uncomment to enable)
-%----------------------------------------------
+%%	Debugging utilities (uncomment to enable)
 %\overfullrule=1mm % Show overfull hboxes
 %\usepackage{layout} % Insert graphic of page layout using \layout in body
 
-%----------------------------------------------
-%	Custom things
-%----------------------------------------------
 \definecolor{lightgray}{gray}{0.8}
 \newcommand\VRule{\color{lightgray}\vrule width 1pt}
 \newcommand\HRule{\color{lightgray}\hrule height 0.4pt}
@@ -54,7 +47,7 @@
 \makeatother
 
 %----------------------------------------------
-%   Document Variables
+%   Creates a DSL for resume templating
 %----------------------------------------------
 \newcommand\Name{}
 \newcommand\ProfessionalTitle{}
@@ -156,19 +149,19 @@
   { \end{itemize}\vspace{-0.3em} }
   
 %----------------------------------------------
-%	Cover Letter
+%	Cover Letter TODO: update or remove
 %----------------------------------------------
-\newenvironment{CoverLetter}
-  {%
-    \today \par \vspace{20pt}%
-    \DoIfNoText{\CompanyAddress} {%
-      \DoIfNoText{\Company}%
-        {\Company \\}
-      \CompanyAddress \par \vspace{20pt}
-    }
-  }
-  {%
-    \par \vspace{30pt}%
-    \Name{} \par \vspace{10pt}%
-    \DoIfNoText{\Encl} {\par\noindent\textbf{Encl:}~\Encl{}}%
-  }
+%\newenvironment{CoverLetter}
+%  {%
+%    \today \par \vspace{20pt}%
+%    \DoIfNoText{\CompanyAddress} {%
+%      \DoIfNoText{\Company}%
+%        {\Company \\}
+%      \CompanyAddress \par \vspace{20pt}
+%    }
+%  }
+%  {%
+%    \par \vspace{30pt}%
+%    \Name{} \par \vspace{10pt}%
+%    \DoIfNoText{\Encl} {\par\noindent\textbf{Encl:}~\Encl{}}%
+%  }
