@@ -1,15 +1,15 @@
 \ProvidesFile{jobapp}
 \special{papersize=8.5in,11in}
 
-%%	Dependencies 
+%----------------------------------------------
+%	Dependencies
+%----------------------------------------------
 \usepackage{array}
 \usepackage{xcolor}
 \usepackage[margin=1.5cm,top=60pt]{geometry}
 \usepackage{parskip}
 \usepackage{setspace}
 \usepackage{textcomp} % Needed for pagella font bullet points
-%\usepackage[default,scale=0.95]{opensans}
-\usepackage[T1]{fontenc}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{ifthen}
@@ -19,18 +19,30 @@
 
 \usepackage{lmodern}
 \usepackage{scrextend}
-\changefontsizes{8pt}
-\usepackage{fontspec}
-\setmainfont{Droid Sans}
 
-%%	Debugging utilities (uncomment to enable)
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\usepackage[sfdefault]{arimo}
+\setmainfont{Arimo}
+
+% Set the default font to be sans-serif
+\renewcommand*{\familydefault}{\sfdefault}
+
+\changefontsizes{8pt}
+
+%----------------------------------------------
+%	Debugging utilities (uncomment to enable)
+%----------------------------------------------
 %\overfullrule=1mm % Show overfull hboxes
 %\usepackage{layout} % Insert graphic of page layout using \layout in body
 
+%----------------------------------------------
+%	Custom things
+%----------------------------------------------
 \definecolor{lightgray}{gray}{0.8}
-\newcommand\VRule{\color{lightgray}\vrule width 1pt}
+\newcommand\VRule{\color{lightgray}\vrule width 0.4pt}
 \newcommand\HRule{\color{lightgray}\hrule height 0.4pt}
-\newcolumntype{L}{>{\raggedleft}p{0.11\textwidth}}
+\newcolumntype{L}{>{\raggedleft}p{0.12\textwidth}}
 \newcolumntype{R}{p{0.85\textwidth}}
 
 \makeatletter
@@ -47,7 +59,7 @@
 \makeatother
 
 %----------------------------------------------
-%   Creates a DSL for resume templating
+%   Document Variables
 %----------------------------------------------
 \newcommand\Name{}
 \newcommand\ProfessionalTitle{}
@@ -116,18 +128,18 @@
 %----------------------------------------------
 
 %% Header Left - Show large name on first page
-\fancyhead[LH]{% 
+\fancyhead[LH]{%
   \ifthenelse{\value{page}=1}{%
     \raisebox{1.2\height}{ %
     	\parbox[t]{0.85\textwidth}{ %
-	    	\Huge{\scshape{\Name}} \vspace{2pt} \\ \large{\textcolor{gray}{\ProfessionalTitle}} %
+	    	\textbf{\Huge{\Name}} \vspace{2pt} \\ \large{\textcolor{gray}{\ProfessionalTitle}} %
     	} %
 	 }
   }{}
 }
 
 %% Header Right - Show contact info on first page; name otherwise.
-\fancyhead[RH]{% 
+\fancyhead[RH]{%
   \ifthenelse{\value{page}=1}{\contactblock}{\Large\scshape{\Name}}
 }
 
@@ -147,21 +159,21 @@
 \newenvironment{citemize}
   { \vspace{-0.2em}\begin{itemize}[leftmargin=12pt, itemsep=0.1em] }
   { \end{itemize}\vspace{-0.3em} }
-  
+
 %----------------------------------------------
-%	Cover Letter TODO: update or remove
+%	Cover Letter
 %----------------------------------------------
-%\newenvironment{CoverLetter}
-%  {%
-%    \today \par \vspace{20pt}%
-%    \DoIfNoText{\CompanyAddress} {%
-%      \DoIfNoText{\Company}%
-%        {\Company \\}
-%      \CompanyAddress \par \vspace{20pt}
-%    }
-%  }
-%  {%
-%    \par \vspace{30pt}%
-%    \Name{} \par \vspace{10pt}%
-%    \DoIfNoText{\Encl} {\par\noindent\textbf{Encl:}~\Encl{}}%
-%  }
+\newenvironment{CoverLetter}
+  {%
+    \today \par \vspace{20pt}%
+    \DoIfNoText{\CompanyAddress} {%
+      \DoIfNoText{\Company}%
+        {\Company \\}
+      \CompanyAddress \par \vspace{20pt}
+    }
+  }
+  {%
+    \par \vspace{30pt}%
+    \Name{} \par \vspace{10pt}%
+    \DoIfNoText{\Encl} {\par\noindent\textbf{Encl:}~\Encl{}}%
+  }
