@@ -156,20 +156,28 @@
 %% Table style used by resume including vertical divider
 \newenvironment{CvTable}
   {\begin{minipage}{\textwidth}\begin{tabular}{L!VR}}
-  {\end{tabular}\vspace{0.25em}\end{minipage}}
+  {\end{tabular}\end{minipage}}
 
 %% Create compact itemize
 \newenvironment{citemize}
   {\vspace{-0.2em}\begin{itemize}[leftmargin=12pt, itemsep=0.1em]}
   {\end{itemize}\vspace{-0.5em}}
 
-\newcommand{\WorkExperience}[5]{%
+\newcommand{\ResumeLayout}[2]{%
 	\begin{CvTable}%
-		\textbf{#1} \\ #2 & \parbox[t]{\columnwidth}{%
-			\textbf{#3} \hfill \textbf{#4}%
-			\begin{citemize}#5\end{citemize}%
-		}%
+		#1 & #2%
 	\end{CvTable}%
+}
+
+\newcommand{\WorkExperience}[5]{%
+	\ResumeLayout%
+		{\textbf{#1} \\ #2}%
+		{%
+			\parbox[t]{\columnwidth}{%
+				\textbf{#3} \hfill \textbf{#4}%
+				\begin{citemize}#5\end{citemize}%
+			}%
+		}%
 }
 
 %----------------------------------------------
