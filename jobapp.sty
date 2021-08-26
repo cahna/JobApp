@@ -34,16 +34,14 @@
 %	Debugging utilities (uncomment to enable)
 %----------------------------------------------
 %\overfullrule=1mm % Show overfull hboxes
-%\usepackage{layout} % Insert graphic of page layout using \layout in body
+\usepackage{layout} % Insert graphic of page layout using \layout in body
 
 %----------------------------------------------
 %	Custom things
 %----------------------------------------------
 \definecolor{lightgray}{gray}{0.8}
-\newcommand\VRule{\color{lightgray}\vrule width 0.4pt}
-\newcommand\HRule{\color{lightgray}\hrule height 0.4pt}
-\newcolumntype{L}{>{\raggedleft}p{0.12\textwidth}}
-\newcolumntype{R}{p{0.85\textwidth}}
+\newcommand\VRule{\color{lightgray}\vrule width 0.1em}
+\newcommand\HRule{\color{lightgray}\hrule height 0.1em}
 
 \makeatletter
 \newcommand{\DoIfNoText}[1]{% Thanks to http://tex.stackexchange.com/a/44938
@@ -119,9 +117,10 @@
 \titleformat*{\section}{\bfseries\Large\uppercase}
 \titlespacing{\section}
   {0pt} % left
-  {0.2em} % before
-  {-0.9em} % after
+  {0em} % before
+  {0.5em} % after
   [0pt] % right
+
 
 %----------------------------------------------
 %	Header & footer definitions
@@ -150,15 +149,28 @@
 %	Macros & other
 %----------------------------------------------
 
+\newcolumntype{L}{>{\raggedleft}p{0.12\textwidth}}
+\newcolumntype{V}{\VRule}
+\newcolumntype{R}{p{0.85\textwidth}}
+
 %% Table style used by resume including vertical divider
 \newenvironment{CvTable}
-  {\begin{tabular}{L!{\VRule}R}}
-  {\end{tabular}}
+  {\begin{minipage}{\textwidth}\begin{tabular}{L!VR}}
+  {\end{tabular}\vspace{0.25em}\end{minipage}}
 
 %% Create compact itemize
 \newenvironment{citemize}
-  { \vspace{-0.2em}\begin{itemize}[leftmargin=12pt, itemsep=0.1em] }
-  { \end{itemize}\vspace{-0.3em} }
+  {\vspace{-0.2em}\begin{itemize}[leftmargin=12pt, itemsep=0.1em]}
+  {\end{itemize}\vspace{-0.5em}}
+
+\newcommand{\WorkExperience}[5]{%
+	\begin{CvTable}%
+		\textbf{#1} \\ #2 & \parbox[t]{\columnwidth}{%
+			\textbf{#3} \hfill \textbf{#4}%
+			\begin{citemize}#5\end{citemize}%
+		}%
+	\end{CvTable}%
+}
 
 %----------------------------------------------
 %	Cover Letter
