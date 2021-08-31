@@ -80,17 +80,17 @@
 \newcommand{\OptionalCompany}[1]{%
   \DoIfNoText{#1}
     {\renewcommand{\Company}{\ignorespaces#1}}%
-  }
+}
 
 \newcommand{\OptionalCompanyAddress}[1]{%
   \DoIfNoText{#1}
     {\renewcommand{\CompanyAddress}{\ignorespaces#1}}%
-  }
+}
 
 \newcommand{\OptionalEncl}[1]{%
   \DoIfNoText{#1}
     {\renewcommand{\Encl}{\ignorespaces#1}}%
-  }
+}
 
 %----------------------------------------------
 %   Helpers
@@ -133,7 +133,7 @@
       \parbox[t]{0.85\textwidth}{ %
         \textbf{\Huge{\Name}} \vspace{2pt} \\ \large{\textcolor{gray}{\ProfessionalTitle}} %
       } %
-   }
+    }
   }{}
 }
 
@@ -150,13 +150,12 @@
 %----------------------------------------------
 
 \newcolumntype{L}{>{\raggedleft}p{0.12\textwidth}}
-\newcolumntype{V}{\VRule}
-\newcolumntype{R}{p{0.85\textwidth}}
+\newcolumntype{R}{\VRule p{0.88\textwidth}}
 
 %% Table style used by resume including vertical divider
 \newenvironment{CvTable}
-  {\begin{minipage}{\textwidth}\begin{tabular}{L!VR}}
-  {\end{tabular}\end{minipage}}
+  {\begin{tabular}{L!R}}
+  {\end{tabular}}
 
 %% Create compact itemize
 \newenvironment{citemize}
@@ -165,8 +164,8 @@
 
 \newcommand{\ResumeLayout}[2]{%
   \begin{CvTable}%
-    #1 & #2%
-  \end{CvTable}\vspace{0.25em}%
+    #1 & \begin{minipage}[t]{0.84\columnwidth}#2\end{minipage}%
+  \end{CvTable}\vspace{0.4em}%
 }
 
 \newcommand{\WorkExperience}[5]{%
@@ -188,7 +187,7 @@
     \today \par \vspace{20pt}%
     \DoIfNoText{\CompanyAddress} {%
       \DoIfNoText{\Company}%
-        {\Company \\}
+      {\Company \\}
       \CompanyAddress \par \vspace{20pt}
     }
   }
