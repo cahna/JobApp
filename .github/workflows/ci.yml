@@ -4,6 +4,10 @@ name: Main Branch CI
 on:
   push:
     branches: [master]
+  release:
+    types: [created]
+  schedule:
+    - cron: "0 0 * * 0"
 
 env:
   IMAGE_NAME: cahna/jobapp
