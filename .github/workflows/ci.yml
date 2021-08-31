@@ -63,9 +63,10 @@ jobs:
       - name: Test Docker image
         id: test
         uses: addnab/docker-run-action@v3
-        image: ${{ env.JOBAPP_DOCKER_IMAGE }}
-        options: $(pwd):/data --user="$(id -u):$(id -g)"
-        run: lualatex -synctex=1 -interaction=nonstopmode example.tex
+        with:
+          image: ${{ env.JOBAPP_DOCKER_IMAGE }}
+          options: $(pwd):/data --user="$(id -u):$(id -g)"
+          run: lualatex -synctex=1 -interaction=nonstopmode example.tex
 
       - name: Archive example usage artifacts
         uses: actions/upload-artifact@v2
