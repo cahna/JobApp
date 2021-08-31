@@ -60,12 +60,11 @@ jobs:
           context: .
           push: false
           load: true
+          tags: ${{ env.JOBAPP_DOCKER_IMAGE }}
 
       - name: Test Docker image
         id: test
         run: docker run --rm -v $(pwd):/data --user="$(id -u):$(id -g)" "$JOBAPP_DOCKER_IMAGE" lualatex -synctex=1 -interaction=nonstopmode example.tex
-        with:
-          builder: ${{ steps.buildx.outputs.name }}
 
       - name: Archive example usage artifacts
         uses: actions/upload-artifact@v2
