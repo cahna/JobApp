@@ -2,6 +2,8 @@
 
 A latex style for resumes. Includes Dockerfile to build the resume PDF from `.tex` source.
 
+[![Example Resume](./example-thumb.jpeg)](./example.jpeg)
+
 ## Build
 
 ```sh
