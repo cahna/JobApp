@@ -59,7 +59,7 @@ jobs:
 
       - name: Test Docker image
         id: test
-        run: docker run --rm -it -v $(pwd):/data --user="$(id -u):$(id -g)" "$JOBAPP_DOCKER_IMAGE" lualatex -synctex=1 -interaction=nonstopmode example.tex
+        run: docker run --rm -v $(pwd):/data --user="$(id -u):$(id -g)" "$JOBAPP_DOCKER_IMAGE" lualatex -synctex=1 -interaction=nonstopmode example.tex
 
       - name: Archive example usage artifacts
         uses: actions/upload-artifact@v2
