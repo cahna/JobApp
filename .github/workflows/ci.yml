@@ -61,20 +61,22 @@ jobs:
           push: false
           load: true
 
-      - name: Test Docker image
-        id: test
-        run: docker run --rm -v $(pwd):/data --user="$(id -u):$(id -g)" "$JOBAPP_DOCKER_IMAGE" lualatex -synctex=1 -interaction=nonstopmode example.tex
+      # - name: Test Docker image
+      #   id: test
+      #   run: docker run --rm -v $(pwd):/data --user="$(id -u):$(id -g)" "$JOBAPP_DOCKER_IMAGE" lualatex -synctex=1 -interaction=nonstopmode example.tex
+      #   with:
+      #     builder: ${{ steps.buildx.outputs.name }}
 
-      - name: Archive example usage artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: jobabb-test-results
-          path: |
-            example.pdf
-            example.log
-            example.out
-            example.aux
-            example.synctex.gz
+      # - name: Archive example usage artifacts
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: jobabb-test-results
+      #     path: |
+      #       example.pdf
+      #       example.log
+      #       example.out
+      #       example.aux
+      #       example.synctex.gz
 
       - name: Publish Docker image
         id: docker_publish
