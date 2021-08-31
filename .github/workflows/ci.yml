@@ -59,14 +59,11 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           context: .
           push: false
+          load: true
 
       - name: Test Docker image
         id: test
-        uses: addnab/docker-run-action@v3
-        with:
-          image: ${{ env.JOBAPP_DOCKER_IMAGE }}
-          options: $(pwd):/data --user="$(id -u):$(id -g)"
-          run: lualatex -synctex=1 -interaction=nonstopmode example.tex
+        run: docker run --rm -v $(pwd):/data --user="$(id -u):$(id -g)" jobapp lualatex -synctex=1 -interaction=nonstopmode example.tex
 
       - name: Archive example usage artifacts
         uses: actions/upload-artifact@v2
