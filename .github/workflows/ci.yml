@@ -55,7 +55,6 @@ jobs:
         with:
           builder: ${{ steps.buildx.outputs.name }}
           context: .
-          target: test
           push: false
 
       - name: Test Docker image
@@ -79,6 +78,5 @@ jobs:
         with:
           builder: ${{ steps.buildx.outputs.name }}
           context: .
-          target: prod
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.prep.outputs.tags }}
